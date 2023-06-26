@@ -1,0 +1,35 @@
+@model List<UserDetails>
+@{
+    Layout = null;
+}
+<table class="table table-striped" id="stduentTable">
+    <thead>
+    <tr>
+        <th scope="col">User ID</th>
+        <th scope="col">User Name</th>
+        <th scope="col">User Email</th>
+        <th scope="col">User Role</th>
+        <th scope="col">Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.username</td>
+            <td>@item.email</td>
+            <td>@item.role</td>
+            <td>
+                <button type="button" class="btn btn-warning" onclick="location.href = '/User/Edit?userId=@item.id';">
+                    Edit
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-secondary mb-3 btn-delete" data-id="@item.id">Delete</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<script src="~/js/user-list.js" asp-append-version="true"></script>
